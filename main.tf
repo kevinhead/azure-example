@@ -19,20 +19,20 @@ provider "github" {
 
 # github user public ssh key
 module "github_user" {
-  source = "github.com/kevinhead/github/d/github_user"
+  source = "github.com/kevinhead/github//d/github_user?ref=v2.3.2"
 
   username = "kevinhead"
 }
 
 module "azurerm_resource_group" {
-  source = "github.com/kevinhead/azurerm/r/azurerm_resource_group"
+  source = "github.com/kevinhead/azurerm//r/azurerm_resource_group?ref=v2.0.0"
 
   location = "East US"
   name     = "example-resources"
 }
 
 module "azurerm_virtual_network" {
-  source = "github.com/kevinhead/azurerm/r/azurerm_virtual_network"
+  source = "github.com/kevinhead/azurerm//r/azurerm_virtual_network?ref=v2.0.0"
 
   address_space       = ["10.0.0.0/16"]
   location            = module.azurerm_resource_group.this.location
@@ -41,7 +41,7 @@ module "azurerm_virtual_network" {
 }
 
 module "azurerm_subnet" {
-  source = "github.com/kevinhead/azurerm/r/azurerm_subnet"
+  source = "github.com/kevinhead/azurerm//r/azurerm_subnet?ref=v2.0.0"
 
   address_prefix       = "10.0.2.0/24"
   name                 = "internal"
@@ -50,7 +50,7 @@ module "azurerm_subnet" {
 }
 
 module "azurerm_network_interface" {
-  source = "github.com/kevinhead/azurerm/r/azurerm_network_interface"
+  source = "github.com/kevinhead/azurerm//r/azurerm_network_interface?ref=v2.0.0"
 
   location            = module.azurerm_resource_group.this.location
   name                = "example-nic"
@@ -68,7 +68,7 @@ module "azurerm_network_interface" {
 }
 
 module "azurerm_linux_virtual_machine" {
-  source = "github.com/kevinhead/azurerm/r/azurerm_linux_virtual_machine"
+  source = "github.com/kevinhead/azurerm//r/azurerm_linux_virtual_machine?ref=v2.0.0"
 
   admin_username        = "kevinhead"
   location              = module.azurerm_resource_group.this.location
